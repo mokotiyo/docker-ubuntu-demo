@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  www:
+    # Imageを作るための設定
+    build:
+      # buildするときのカレントディレクトリ
+      context: ./
+    # buildしたimageにつける名前
+    image: www
+    # Containerの寿命と異なる永続的な保存領域をマウントする
+    volumes:
+      # Host Volume。ホスト側のディレクトリをマウントする
+      - ./app:/var/app
+    # コンテナのポートを外部に露出する。localhost:xxとしてアクセスできる
+    ports:
+      # 80をlocalhost:81としてバインドする
+      - 81:80
+    environment:
+      - VIRTUAL_HOST=test.mokotiyo.jp
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
+
