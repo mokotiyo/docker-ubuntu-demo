@@ -54,8 +54,8 @@ RUN a2enmod mpm_prefork
 #RUN a2enconf userlog
 #RUN a2enconf mpm_prefork
 
-#COPY sites-available/*.conf /etc/apache2/sites-available
-#RUN a2ensite xxxx
+COPY sites-available/*.conf /etc/apache2/sites-available
+RUN a2ensite mokotiyo
 
 
 
